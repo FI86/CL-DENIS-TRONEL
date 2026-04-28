@@ -31,7 +31,7 @@ except Exception as e:
 print("Appuie sur Ctrl+C pour tester...")
 
 try:
-    # interception d'un SystemExit
+    # Interception d'un SystemExit
     # import sys
     # sys.exit(1)
     while True:
