@@ -23,6 +23,8 @@ connection.commit()
 
 # Lire le contenu de la table Utilisateurs
 # Requete de séléction de toutes les donnees
+print()
+print("Ligne avec fetchall")
 cursor.execute("SELECT * FROM Utilisateurs")
 enr = cursor.fetchall()
 
@@ -41,6 +43,8 @@ cursor.execute(f"SELECT * FROM Utilisateurs WHERE nom = '{nom}'")
 # S'il n'existe pas, cela retourne None.
 # L'execution d'un nouveau execute() reinitialitise la position du curseur
 # au début des enregistrements disponible.
+print()
+print("ligne avec fetchone")
 r = cursor.fetchone()
 print(r)
 r = cursor.fetchone()
@@ -48,6 +52,8 @@ print(r)
 
 # on relit
 cursor.execute(f"SELECT * FROM Utilisateurs WHERE nom = '{nom}'")
+print()
+print("relecture avec fetchone")
 r = cursor.fetchone()
 print(r)
 r = cursor.fetchone()
