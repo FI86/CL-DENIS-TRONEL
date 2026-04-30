@@ -5,7 +5,7 @@
 
 # Dans un premier temps :
 # Créer un dictionnaire qui permettra d'enregistrer en clé le nom 
-# et en valeur l'age et la taille de l'utilisateur.
+# et en valeur l'age et la taille de l'utilisateur en mètre.
 # Créer une fonction inscription pour saisir les données utilisateurs, 
 # les inscrire dans le dictionnaire et poser la question si on veut continuer
 # à saisir un utilisateur.
@@ -43,9 +43,9 @@ dico = {}
 def inscription():
     while True:
         nom = input("Saisir le nom de l'utilisateur : ")
-        # Verification si un nom n'a pas de chiffre dans la saisie.
-        if any(c.isdigit() for c in nom):
-            print("le nom ne doit pas avoir de chiffre.")
+        # Verification si un nom n'a pas de chiffre ni @ ni # dans la saisie.
+        if any(c.isdigit() for c in nom) or "@" in nom or "#" in nom:
+            print("le nom ne doit pas avoir de chiffre, ni @ ni #.")
             continue
 
         while True:
@@ -70,6 +70,7 @@ def inscription():
 
         dico[nom] = (age, taille)
         reponse = input("Ecrire 'non' pour arreter de saisir un utilisateur.")
+
         if reponse.upper() == "NON": break
 
 def consultation():
@@ -113,6 +114,7 @@ def lecture():
                 # remplacer (\d+) par (?:[0-9]|[1-9][0-9]|1[0-4][0-9]|150)
                 regexp = re.compile(r'^(.+)@(\d+)#([012]\.\d+)$')
                 m = re.match(regexp, ligneInfos)
+
                 if m:
                     nom = m[1]
                     age = int(m[2])
@@ -120,6 +122,7 @@ def lecture():
                     dico[nom] = (age, taille)
                 else:
                     print("Ligne invalide rencontrée :", ligneInfos.rstrip('\n'))
+
     # Si le fichier n'est pas trouvé à la lecture on le crée.
     except Exception:
         f = open(CHEMIN + FICHIER, "wt")
@@ -196,7 +199,7 @@ def main():
         if reponse not in dicoMenu.keys(): 
             print("Veuillez saisir un choix du menu.")
         else: 
-            eval("dicoMenu.get(reponse, "")[1]()")
+            eval("dicoMenu.get(reponse)[1]()")
         ligne()
     
 if __name__ == "__main__":
