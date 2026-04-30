@@ -5,7 +5,7 @@
 
 # Dans un premier temps :
 # Créer un dictionnaire qui permettra d'enregistrer en clé le nom 
-# et en valeur l'age et la taille de l'utilisateur.
+# et en valeur l'age et la taille de l'utilisateur en mètre.
 # Créer une fonction inscription pour saisir les données utilisateurs, 
 # les inscrire dans le dictionnaire et poser la question si on veut continuer
 # à saisir un utilisateur.
