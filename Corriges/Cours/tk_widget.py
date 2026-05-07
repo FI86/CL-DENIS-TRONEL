@@ -62,7 +62,10 @@ ttk.Entry(root, width=30, textvariable=monTexte).pack()
 monTexte.set("Mon nouveau texte")
 
 # Gestion d'événements
-root.bind("<F1>", quit)
-root.bind("<Escape>", quit, add="+")
+def quitter(event=None):
+    root.quit()
+
+root.bind("<F1>", quitter)
+root.bind("<Escape>", quitter, add="+")
 
 root.mainloop()
