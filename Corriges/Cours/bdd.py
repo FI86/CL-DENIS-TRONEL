@@ -14,11 +14,12 @@ connection = sqlite3.connect(FICHIER)
 cursor = connection.cursor()
 
 # Requete de creation d'une table
-cursor.execute("CREATE TABLE IF NOT EXISTS Utilisateurs (Nom TEXT, Age INT, Taille DOUBLE)")
+cursor.execute("CREATE TABLE IF NOT EXISTS Utilisateurs (id INTEGER PRIMARY KEY, nom TEXT, age INTEGER, taille REAL)")
 connection.commit()
 
 # Requete d'insertion dans une table
-cursor.execute("INSERT INTO Utilisateurs VALUES ('Toto', 18, 170)")
+# On precise (nom, age, taille) car id n'est pas precisé.
+cursor.execute("INSERT INTO Utilisateurs (nom, age, taille) VALUES (?, ?, ?)", ('Toto', 18, 170))
 connection.commit()
 
 # Lire le contenu de la table Utilisateurs
