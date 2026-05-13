@@ -61,10 +61,11 @@ monTexte.set(f"J'ajoute {texte}")
 ttk.Entry(root, width=30, textvariable=monTexte).pack()
 monTexte.set("Mon nouveau texte")
 
-# Gestion d'événements
+
 def quitter(event=None):
     root.quit()
-
+    
+# Gestion d'événements
 root.bind("<F1>", quitter)
 root.bind("<Escape>", quitter, add="+")
 
