@@ -1,11 +1,17 @@
 # Fichier d'exemple de proprietes et d'encapsulation
 
+# Class Vehicule
 class Vehicule:
     """classe véhicule"""
-    def __init__(self):
+    def __init__(self, vitesse=0, nbRoues=4):
+        # Attributs sans passer par les propriétés
         self._vitesse = 0
         self.__nbRoues = 4
+        # Attributs controler par les propriétés
+        self.vitesse = vitesse
+        self.nbRoues = nbRoues
 
+    # Propriétés en lecture
     @property
     def nbRoues(self):
         print("Lecture propriété nbRoues : ")
@@ -15,6 +21,7 @@ class Vehicule:
     def vitesse(self):
         return self._vitesse
 
+    # Propriétés en écriture
     @vitesse.setter
     def vitesse(self, vitesse):
         self._vitesse = vitesse
@@ -24,6 +31,7 @@ class Vehicule:
         print(f"Modification propriété nbRoues : {nbRoues}")
         self.__nbRoues = nbRoues
 
+    # Propriété en suppression
     @nbRoues.deleter
     def nbRoues(self):
         print("Réinitialisation propriété nbRoues : RAZ effectuée")
@@ -37,6 +45,7 @@ class Vehicule:
         self._vitesse -= delta_vitesse
     
 
+# Classe Voiture
 class Voiture(Vehicule):
     """classe Voiture"""
     def __init__(self, klaxon="tût tût !"):
@@ -57,7 +66,7 @@ def main():
 
     # Bonne pratique
     print(v.vitesse)
-    # par convention le _ indique que l'attribut est privé
+    # Par convention le _ indique que l'attribut est privé
     # mais cela ne provoque pas d'erreur d'y accéder
     # Mauvaise pratique
     print(v._vitesse) 
