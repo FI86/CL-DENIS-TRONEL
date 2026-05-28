@@ -1,0 +1,22 @@
+[
+    {
+        "Nom":"Alice",
+        "Age":25,
+        "Ville":"Paris"
+    },
+    {
+        "Nom":"Bob",
+        "Age":30,
+        "Ville":"Londres"
+    },
+    {
+        "Nom":"Charlie",
+        "Age":35,
+        "Ville":"Berlin"
+    },
+    {
+        "Nom":"Diana",
+        "Age":40,
+        "Ville":"Madrid"
+    }
+]
