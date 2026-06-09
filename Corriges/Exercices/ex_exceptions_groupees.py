@@ -56,7 +56,7 @@ print("Message global :", eg.args[0])
 # Affiche le nombre de FileNotFoundError.
 # Solution 1 : en utilisant une comprehension de liste.
 # Filtrer et compter les FileNotFoundError dans le groupe.
-nb_fichiers_introuvables = len([exc for exc in eg.exceptions if isinstance(exc, FileNotFoundError)])
+nb_fichiers_introuvables = len([exg for exg in eg.exceptions if isinstance(exg, FileNotFoundError)])
 print(f"Solution 1 : Nombre de fichiers introuvables : {nb_fichiers_introuvables}")
 
 
@@ -65,9 +65,9 @@ print(f"Solution 1 : Nombre de fichiers introuvables : {nb_fichiers_introuvables
 try:
     # Capturer uniquement les FileNotFoundError.
     raise eg
-except* FileNotFoundError as fne_group:
+except* FileNotFoundError as fnfe:
     # Afficher le nombre de fichiers introuvables.
-    print("Solution 2 : Nombre de fichiers introuvables :", len(fne_group.exceptions))
+    print("Solution 2 : Nombre de fichiers introuvables :", len(fnfe.exceptions))
 except* PermissionError as pe_group:
     pass
     # print("Nombre de fichiers interdits :", len(pe_group.exceptions))
@@ -80,13 +80,14 @@ dico = {"FileNotFoundError": "Fichiers introuvables",
         "PermissionError" : "erreur de permission"}
 
 # Boucle sur chaque type pour compter les exceptions.
-for typeExcept in types:
-    nb = len([exception for exception in eg.exceptions if isinstance(exception, typeExcept)])
-    if typeExcept is FileNotFoundError:
+for type in types:
+    nb = len([exception for exception in eg.exceptions if isinstance(exception, type)])
+    
+    if type is FileNotFoundError:
         # Affichage personalise.
-        print(f"Solution 3 : Nombre de {dico[typeExcept.__name__].lower()} : {nb}")
+        print(f"Solution 3 : Nombre de {dico[type.__name__].lower()} : {nb}")
         # Affichage avec le type.
-        print(f"Solution 3 : Nombre de {typeExcept.__name__} :", nb)
+        print(f"Solution 3 : Nombre de {type.__name__} :", nb)
 
 
 # Suite du programme.
